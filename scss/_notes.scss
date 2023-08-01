@@ -1,0 +1,156 @@
+.page {
+
+	&__notes {
+	}
+}
+.notes {
+
+	&__container {
+		padding-top: 30px;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	&__header {
+	}
+
+	&__body {
+	}
+}
+
+.header-notes {
+	padding: 5px;
+	background-color: #a9a7a5;
+
+	&__list {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-left: 30px;
+	}
+
+	&__item {
+		font-size: 18px;
+		font-weight: 700;
+
+		&:first-child {
+			padding: 0 100px 0 70px;
+		}
+
+		&:not(:first-child):not(:last-child){
+			padding: 0 60px;
+		}
+	}
+
+}
+.item--icon {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+
+	& svg:first-child {
+		margin-right: 10px;
+	}
+}
+
+.body-notes {
+	// margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	&__row {
+		margin-top: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #847f7b;
+		background-color: #dbdff3;
+		width: 100%;
+		padding: 5px;
+	}
+
+	&__btn {
+		color: #343333;
+		background-color: #e8e4e2;
+		padding: 5px 10px;
+		margin-left: auto;
+		margin-top: 25px;
+		font-size: 18px;
+		font-weight: 700;
+		border: 2px solid ;
+		border-radius: 5px;
+	}
+}
+
+.row-notes {
+	&__item {
+		font-size: 18px;
+		font-weight: 500;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		// width: 180px;
+
+	}
+}
+.item-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	background-color: #847f7b;
+	padding: 7px;
+	margin-left: 25px;
+	border-radius: 50%;
+}
+.item-name {
+	color: #5a5654;
+	font-weight: 600;
+	padding-left: 35px;
+	width: 215px;
+}
+.item-created {
+	margin-left: 30px;
+	width: 140px;
+}
+.item-category {
+	margin-left: 40px;
+	width: 140px;
+}
+.item-content {
+	margin-left: 50px;
+	width: 160px;
+}
+.item-dates {
+	margin-left: 25px;
+	width: 170px;
+}
+.item-icons {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+	gap: 10px;
+
+	&__edit {
+	}
+
+	&__archive {
+	}
+
+	&__delete {
+	}
+}
+
+
+
+
+
+
+

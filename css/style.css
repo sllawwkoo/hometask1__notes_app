@@ -1,0 +1,253 @@
+/***
+    The new CSS reset - version 1.7.3 (last updated 7.8.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+  -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  -moz-appearance: revert;
+       appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::-moz-placeholder {
+  color: unset;
+}
+::placeholder {
+  color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+  display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+  - fix for the content editable attribute will work properly.
+  - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable=false])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable=true]) {
+  -webkit-user-drag: element;
+}
+
+/* my own advanced settings */
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+html,
+body {
+  height: 100%;
+  line-height: 1;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Roboto";
+  color: #FFFFFF;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.notes__container {
+  padding-top: 30px;
+}
+.notes__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+}
+.header-notes {
+  padding: 5px;
+  background-color: #a9a7a5;
+}
+.header-notes__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+}
+.header-notes__item {
+  font-size: 18px;
+  font-weight: 700;
+}
+.header-notes__item:first-child {
+  padding: 0 100px 0 70px;
+}
+.header-notes__item:not(:first-child):not(:last-child) {
+  padding: 0 60px;
+}
+
+.item--icon {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+.item--icon svg:first-child {
+  margin-right: 10px;
+}
+
+.body-notes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.body-notes__row {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #847f7b;
+  background-color: #dbdff3;
+  width: 100%;
+  padding: 5px;
+}
+.body-notes__btn {
+  color: #343333;
+  background-color: #e8e4e2;
+  padding: 5px 10px;
+  margin-left: auto;
+  margin-top: 25px;
+  font-size: 18px;
+  font-weight: 700;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+.row-notes__item {
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  background-color: #847f7b;
+  padding: 7px;
+  margin-left: 25px;
+  border-radius: 50%;
+}
+
+.item-name {
+  color: #5a5654;
+  font-weight: 600;
+  padding-left: 35px;
+  width: 215px;
+}
+
+.item-created {
+  margin-left: 30px;
+  width: 140px;
+}
+
+.item-category {
+  margin-left: 40px;
+  width: 140px;
+}
+
+.item-content {
+  margin-left: 50px;
+  width: 160px;
+}
+
+.item-dates {
+  margin-left: 25px;
+  width: 170px;
+}
+
+.item-icons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 10px;
+}
