@@ -1,0 +1,42 @@
+.summary-table {
+
+	&__container {
+		padding-top: 80px;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	&__header {
+	}
+
+	&__body {
+	}
+}
+
+.header-sum {
+	padding: 12px;
+	background-color: #a9a7a5;
+
+	&__list {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding-left: 30px;
+		gap: 170px;
+	}
+
+	&__item {
+		font-size: 18px;
+		font-weight: 700;
+
+		&:first-child {
+			margin: 0 200px 0 50px;
+		}
+	}
+}
+

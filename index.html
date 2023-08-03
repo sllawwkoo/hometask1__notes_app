@@ -4,7 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,regular,500,700,900&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,regular,500,700,900&display=swap"
+		rel="stylesheet" />
 	<link rel="stylesheet" href="./css/style.css">
 	<title>Notes App</title>
 </head>
@@ -35,15 +36,46 @@
 										id="Trash">
 										<path
 											d="M413.7 133.4c-2.4-9-4-14-4-14-2.6-9.3-9.2-9.3-19-10.9l-53.1-6.7c-6.6-1.1-6.6-1.1-9.2-6.8-8.7-19.6-11.4-31-20.9-31h-103c-9.5 0-12.1 11.4-20.8 31.1-2.6 5.6-2.6 5.6-9.2 6.8l-53.2 6.7c-9.7 1.6-16.7 2.5-19.3 11.8 0 0-1.2 4.1-3.7 13-3.2 11.9-4.5 10.6 6.5 10.6h302.4c11 .1 9.8 1.3 6.5-10.6zM379.4 176H132.6c-16.6 0-17.4 2.2-16.4 14.7l18.7 242.6c1.6 12.3 2.8 14.8 17.5 14.8h207.2c14.7 0 15.9-2.5 17.5-14.8l18.7-242.6c1-12.6.2-14.7-16.4-14.7z"
-											fill="#e0ebeb" class="color000000 svgShape"></path>
+											fill="#e0ebeb"></path>
 									</svg>
 								</li>
 							</ul>
 						</div>
-						<div id="body-notes" class="notes__body body-notes">
-							
+						<div id="body-notes" class="notes__body body-notes"></div>
+						<button type="button" id="createNote" class="body-notes__btn">Create Note</button>
+						<div class="modal" id="addNoteModal">
+							<div class="modal__container">
+								<input class="modal__input" type="text" id="noteName" placeholder="Name">
+								<select class="modal__select" name="Category" id="noteCategory">
+									<option disabled selected value="">Select Category</option>
+									<option value="Task">Task</option>
+									<option value="Random Thought">Random Thought</option>
+									<option value="Idea">Idea</option>
+									<option value="Quote">Quote</option>
+								</select>
+								<input class="modal__input" type="text" id="noteContent" placeholder="Content">
+								<div class="modal__buttons">
+									<button type="button" class="modal__save-btn" id="saveNoteBtn" disabled>Save</button>
+									<button type="button" class="modal__cancel-btn" id="cancelSaveNoteBtn">Cancel</button>
+								</div>
+							</div>
 						</div>
-						<button type="button" class="body-notes__btn">Create Note</button>
+					</div>
+				</div>
+			</section>
+			<section class="page__summary-table summary-table">
+				<div class="summary-table__container container">
+					<div class="summary-table__wrapper">
+						<div class="summary-table__header header-sum">
+							<ul class="header-sum__list">
+								<li class="header-sum__item">Note Category</li>
+								<li class="header-sum__item">Active</li>
+								<li class="header-sum__item">Archived</li>
+							</ul>
+						</div>
+						<div class="summary-table__body body-sum">
+
+						</div>
 					</div>
 				</div>
 			</section>
