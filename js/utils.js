@@ -27,7 +27,8 @@ export function generateRandomId() {
 export function extractDatesFromString(sentence) {
 	const dateRegex = /(\d{1,2}(\.|\/)\d{1,2}(\.|\/)\d{2,4})/g;
 	const datesArray = sentence.match(dateRegex);
-	const datesString = datesArray ? datesArray.join(", ") : ""; // Об'єднуємо знайдені дати через кому, якщо є, або повертаємо пустий рядок
+	// Об'єднуємо знайдені дати через кому, якщо є, або повертаємо пустий рядок
+	const datesString = datesArray ? datesArray.join(", ") : "";
  
 	return datesString;
  }

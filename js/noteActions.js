@@ -1,9 +1,11 @@
 import { renderNotes } from "./createNote.js";
 import { notesData } from "./data.js";
+import { editButtons, deleteButtons } from "./variables.js";
 import { extractDatesFromString } from "./utils.js";
+import { updateSummaryTable } from "./createSummaryTable.js";
 
 //видалення однієї нотатки(рядка)
-export function deleteNote(event) {
+function deleteNote(event) {
 	const rowToDelete = event.target.closest('.body-notes__row');
 	const noteId = rowToDelete.dataset.id;
 
@@ -12,10 +14,29 @@ export function deleteNote(event) {
 		notesData.splice(noteIndex, 1);
 		rowToDelete.remove()
 	};
+
+	renderNotes()
+	updateSummaryTable()
 };
 
-//редагування нотатки(рядка)
+export function addDeleteButtonListeners() {
+	Array.from(deleteButtons).forEach((deleteBtn) => {
+		deleteBtn.addEventListener('click', deleteNote);
+	});
+}
 
+export function updateDeleteButtonListeners() {
+	// Видаляємо всі старі слухачі
+	Array.from(deleteButtons).forEach((deleteBtn) => {
+		deleteBtn.removeEventListener('click', deleteNote);
+	});
+
+	// Додаємо нові слухачі для всіх editButtons
+	addDeleteButtonListeners();
+}
+
+
+//редагування нотатки(рядка)
 export function editNote(row) {
 	const columns = row.getElementsByClassName('item-edit');
 
@@ -35,39 +56,26 @@ export function editNote(row) {
 		}
 	});
 
-	const saveButton = document.createElement('button');
-	saveButton.textContent = 'Save';
-	saveButton.classList.add('edit-saveBtn');
-	row.appendChild(saveButton);
+	const saveButton = createButton('Save', ['edit-saveBtn'], row, onSaveButtonClick);
+	const cancelButton = createButton('Cancel', ['edit-cancelBtn'], row, onCancelButtonClick);
 
-	const cancelButton = document.createElement('button');
-	cancelButton.textContent = 'Cancel';
-	cancelButton.classList.add('edit-cancelBtn');
-	row.appendChild(cancelButton);
-
-	cancelButton.addEventListener('click', () => {
+	function onCancelButtonClick() {
 		Array.from(columns).forEach((column, index) => {
 			column.innerHTML = origrinalValues[index]
 		});
 
 		row.removeChild(saveButton);
 		row.removeChild(cancelButton);
-	});
+	};
 
-	let newValue = [];
-	saveButton.addEventListener('click', () => {
+	function onSaveButtonClick() {
+		let newValue = [];
 		Array.from(document.getElementsByClassName('edit-input')).forEach((item, index) => {
 			columns[index].innerHTML = item.value
 			newValue.push(item.value);
 		});
 
 		let [name, category, content] = newValue;
-		let icon = row.querySelector('.icon-image')
-		icon.src = `./image/${category.toLowerCase()}.svg`;
-
-
-		let dates = row.querySelector('.item-dates');
-		dates.innerHTML = extractDatesFromString(content)
 
 		const noteId = row.dataset.id;
 		const noteIndex = notesData.findIndex((note) => note.id === noteId);
@@ -81,12 +89,43 @@ export function editNote(row) {
 				dates: extractDatesFromString(content),
 			};
 			notesData[noteIndex] = updatedNote;
+			renderNotes()
+			updateSummaryTable()
 		}
-		console.log(notesData);
 
 		row.removeChild(saveButton);
 		row.removeChild(cancelButton);
+	};
 
-	})
+	updateSummaryTable()
+};
 
+function createButton(text, classes, parent, clickHandler) {
+	const button = document.createElement('button');
+	button.textContent = text;
+	button.classList.add(...classes);
+	parent.appendChild(button);
+	button.addEventListener('click', clickHandler);
+	return button;
+};
+
+export function addEditButtonListeners() {
+	Array.from(editButtons).forEach((editBtn) => {
+		editBtn.addEventListener('click', handleEditButtonClick);
+	});
+}
+
+export function updateEditButtonListeners() {
+	// Видаляємо всі старі слухачі
+	Array.from(editButtons).forEach((editBtn) => {
+		editBtn.removeEventListener('click', handleEditButtonClick);
+	});
+
+	// Додаємо нові слухачі для всіх editButtons
+	addEditButtonListeners();
+}
+
+function handleEditButtonClick(event) {
+	const row = event.target.closest('.body-notes__row');
+	editNote(row);
 }

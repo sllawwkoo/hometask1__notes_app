@@ -209,6 +209,17 @@ body {
   transform: scale(0.9);
 }
 
+#archive {
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+}
+#archive:hover {
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.row-notes.archived {
+  background-color: #efd6e1;
+}
 .row-notes__item {
   font-size: 18px;
   font-weight: 500;
@@ -269,6 +280,14 @@ body {
   transform: scale(0.9);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+.item-icons__archive {
+  transition: all 0.4s ease-out;
+}
+.item-icons__archive:hover {
+  cursor: pointer;
+  transform: scale(0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 .item-icons__delete {
   transition: all 0.4s ease-out;
 }
@@ -312,6 +331,24 @@ body {
 
 .edit-cancelBtn {
   right: 11px;
+}
+
+.btn-restore {
+  margin-left: auto;
+  margin-right: 20px;
+  color: #343333;
+  background-color: #d7deda;
+  padding: 5px 10px;
+  border: 1px solid #847f7b;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+}
+.btn-restore:hover {
+  background-color: #f6faf8;
+}
+.btn-restore:active {
+  transform: scale(0.95);
 }
 
 .modal {
@@ -371,7 +408,7 @@ body {
 }
 
 .summary-table__container {
-  padding-top: 80px;
+  padding: 80px 0;
 }
 .summary-table__wrapper {
   display: flex;
@@ -379,6 +416,7 @@ body {
   width: 100%;
   margin: 0 auto;
 }
+
 .header-sum {
   padding: 12px;
   background-color: #a9a7a5;
@@ -396,4 +434,55 @@ body {
 }
 .header-sum__item:first-child {
   margin: 0 200px 0 50px;
+}
+
+.body-sum {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.body-sum__row {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #847f7b;
+  background-color: #dbdff3;
+  width: 100%;
+  padding: 5px;
+  position: relative;
+}
+
+.row-sum__item {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.sum-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  background-color: #847f7b;
+  padding: 7px;
+  margin-left: 25px;
+  border-radius: 50%;
+}
+
+.sum-category {
+  color: #5a5654;
+  font-weight: 600;
+  margin-left: 23px;
+  width: 150px;
+}
+
+.sum-active {
+  margin-left: 340px;
+  width: 20px;
+}
+
+.sum-archived {
+  margin-left: 210px;
+  width: 20px;
 }
